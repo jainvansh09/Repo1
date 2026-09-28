@@ -3,8 +3,9 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'student-registration'
-        CONTAINER_NAME = 'student-registration'
+        PATH = "/opt/homebrew/bin:/Users/vanshjain/.docker/bin:/usr/local/bin:/usr/bin:/bin"
+        IMAGE_NAME = "student-registration"
+        CONTAINER_NAME = "student-registration"
     }
 
     stages {
@@ -13,6 +14,21 @@ pipeline {
             steps {
                 echo 'Checking out source code from GitHub...'
                 checkout scm
+            }
+        }
+
+        stage('Environment Check') {
+            steps {
+                sh '''
+                    echo "Node version:"
+                    node --version
+
+                    echo "NPM version:"
+                    npm --version
+
+                    echo "Docker version:"
+                    docker --version
+                '''
             }
         }
 
@@ -48,7 +64,7 @@ pipeline {
 
         stage('Verify Deployment') {
             steps {
-                echo 'Checking deployed application...'
+                echo 'Verifying application deployment...'
 
                 sh '''
                     sleep 5
@@ -59,6 +75,7 @@ pipeline {
     }
 
     post {
+
         success {
             echo '======================================'
             echo 'Student Registration App deployed!'
