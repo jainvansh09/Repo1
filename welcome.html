@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome - Student Portal</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card welcome-card">
+
+        <h1>Welcome! 🎓</h1>
+
+        <p id="welcomeMessage"></p>
+
+
+        <div class="student-info">
+
+            <h2>Your Profile</h2>
+
+            <p>
+                <strong>User ID:</strong>
+                <span id="displayUserId"></span>
+            </p>
+
+            <p>
+                <strong>Roll Number:</strong>
+                <span id="displayRollNo"></span>
+            </p>
+
+            <p>
+                <strong>Branch:</strong>
+                <span id="displayBranch"></span>
+            </p>
+
+            <p>
+                <strong>Semester:</strong>
+                <span id="displaySemester"></span>
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                <span id="displayEmail"></span>
+            </p>
+
+        </div>
+
+
+        <button onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    const studentData =
+        localStorage.getItem("student");
+
+    if (!studentData) {
+
+        window.location.href = "/";
+
+    } else {
+
+        const student =
+            JSON.parse(studentData);
+
+        document.getElementById(
+            "welcomeMessage"
+        ).textContent =
+            `Hello, ${student.name}! Welcome to your Student Portal.`;
+
+        document.getElementById(
+            "displayUserId"
+        ).textContent =
+            student.userId;
+
+        document.getElementById(
+            "displayRollNo"
+        ).textContent =
+            student.rollNo;
+
+        document.getElementById(
+            "displayBranch"
+        ).textContent =
+            student.branch;
+
+        document.getElementById(
+            "displaySemester"
+        ).textContent =
+            student.semester;
+
+        document.getElementById(
+            "displayEmail"
+        ).textContent =
+            student.email;
+    }
+
+
+    function logout() {
+
+        localStorage.removeItem("student");
+
+        window.location.href = "/";
+
+    }
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Portal - Login</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="welcome">
+
+        <h1>Student Portal</h1>
+
+        <p>Welcome to the Student Registration System</p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Student Login</h2>
+
+        <form id="loginForm">
+
+            <label>User ID</label>
+
+            <input
+                type="text"
+                id="userId"
+                placeholder="Enter your User ID"
+                required
+            >
+
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+            >
+
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+
+        <p id="loginMessage"></p>
+
+
+        <div class="register-link">
+
+            <p>New student?</p>
+
+            <a href="/register">
+                Create a new account
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
